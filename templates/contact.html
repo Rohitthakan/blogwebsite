@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Codding Horror - Contact Us{% endblock title %}
+{% block contact %}active{% endblock contact %}
+{% block css %}
+<style>
+    .container{
+        min-height: 84vh;
+    }
+</style>
+{% endblock css %}
+{% block body %}
+    <div class="container">
+        <h2 class="text-center my-3">Contact Us</h2>
+        <form action="/contact" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputName" class="form-label">Name</label>
+                <input type="name" name="name" class="form-control" placeholder="Enter your name" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" name="email" class="form-control" placeholder="example@mail.com" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Phone</label>
+              <input type="tel" placeholder="Enter your phone number" class="form-control" id="phone" name="phone">
+            </div>
+            <div class="mb-3">
+                <label for="subject">How may we help you?</label>
+                <textarea id="desc" name="desc" class="form-control" placeholder="Write your concern" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+
+    {% endblock body %}
