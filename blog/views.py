@@ -45,4 +45,10 @@ def contact(request):
     return render(request, 'contact.html')
 
 def search(request):
-    return render(request, 'search.html')
+    search = request.GET.get('search')
+    queryposts = Blog.objects.filter(title__icontains = search)
+    length = len(queryposts)
+    if length<1:
+        queryposts = Blog.objects.filter(content__icontains = search)
+    context = {'queryposts' : queryposts}
+    return render(request, 'search.html', context)
